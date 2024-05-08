@@ -6,7 +6,7 @@
 /*   By: wait-bab <wait-bab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 13:19:55 by wait-bab          #+#    #+#             */
-/*   Updated: 2024/04/28 17:19:25 by wait-bab         ###   ########.fr       */
+/*   Updated: 2024/05/08 11:01:43 by wait-bab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ int	main(int ac, char **av)
 	}
 	else
 	{
-		write(2, RED "ERROR: Bad argument\n", 20 + sizeof(RED) -1);
-		write(2, YELLOW "./fractol mandelbrot\n", 20 + sizeof(YELLOW) -1);
-		write(2, YELLOW "./fractol julia 'num1' 'num2' \n", 32
-			+ sizeof(YELLOW) -1);
+		write(2, RED "ERROR: Bad argument\n", 20 + sizeof(RED) - 1);
+		write(2, YELLOW "./fractol mandelbrot\n", 20 + sizeof(YELLOW) - 1);
+		write(2, YELLOW "./fractol julia 'num1' 'num2' \n", 32 + sizeof(YELLOW)
+			- 1);
 		exit(write(2, YELLOW "🚨 the value must be between [-2 , 2] 🚨\n", 44
-				+ sizeof(YELLOW)-1));
+				+ sizeof(YELLOW) - 1));
 	}
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   extra_tools_bonus.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wait-bab <wait-bab@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/08 10:36:52 by wait-bab          #+#    #+#             */
+/*   Updated: 2024/05/08 10:37:42 by wait-bab         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol_bonus.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
@@ -15,46 +27,65 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	}
 	return (0);
 }
-int get_num(char k, double num)
+
+int	get_num(char k, double num)
 {
-    num = num * 10.0 + (k - '0');
-    return (num);
-}
-double get_after(char *k)
-{
-    int i = 0;
-    double num = 0.0;
-    double fasila = 0.1;
-    while (k[i] >= '0' && k[i] <= '9')
-    {
-        num = num + (k[i] - '0') * fasila ;
-        fasila *= 0.1;
-        i++;
-    }
-    if (k[i] == '\0')
-        return (num);
-    else
-    {
-        write (2,RED"ERROR ARGUMENT\n",16+sizeof(RED)-1);
-        exit(1);
-    }
+	num = num * 10.0 + (k - '0');
+	return (num);
 }
 
-double ft_atof(char *str)
+double	get_after(char *k)
 {
-    double num = 0.0;
-    int i = 0;
+	int		i;
+	double	num;
+	double	fasila;
 
-    while (str[i] == ' ' || str[i] == '\t')
-        i++;
+	i = 0;
+	num = 0.0;
+	fasila = 0.1;
+	if (k[i] == '.' && (k[i + 1] == '\0'))
+		exit(write(1, "error", 5));
+	else
+		i++;
+	while (k[i] >= '0' && k[i] <= '9')
+	{
+		num = num + (k[i] - '0') * fasila;
+		fasila *= 0.1;
+		i++;
+	}
+	while (k[i] == ' ' || k[i] == '\t')
+		i++;
+	if (k[i] == '\0')
+		return (num);
+	else
+		exit(write(2, RED "ERROR ARGUMENT\n", 16 + sizeof(RED) - 1));
+}
 
-    while (str[i] >= '0' && str[i] <= '9')
-    {
-        num = get_num(str[i], num);
-        i++;
-    }
-    if (str[i] == '.')
-        i++;
-    num += get_after(str+i);
-    return num;
+double	ft_atof(char *str)
+{
+	double	num;
+	int		i;
+	int		nega;
+
+	num = 0.0;
+	i = 0;
+	nega = 1;
+	while (str[i] == ' ' || str[i] == '\t')
+		i++;
+	if (str[i] == '\0')
+		exit(write(1, "error", 5));
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i++] == '-')
+			nega = -1;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		num = get_num(str[i], num);
+		i++;
+	}
+	if (str[i] == '.' && (i > 0 && (str[i - 1] >= '0' && str[i - 1] <= '9')))
+		i++;
+	num += get_after(str + i - 1);
+	return (num * nega);
 }

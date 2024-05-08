@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hooks_bonus.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wait-bab <wait-bab@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/08 10:56:03 by wait-bab          #+#    #+#             */
+/*   Updated: 2024/05/08 10:56:04 by wait-bab         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol_bonus.h"
 
 void	h_key(t_fractol *frac)
@@ -16,6 +28,7 @@ void	h_key(t_fractol *frac)
 		helpp = 0;
 	}
 }
+
 void	key_arrow(t_fractol *frac, mlx_key_data_t keydata)
 {
 	double	tmp;
@@ -34,7 +47,7 @@ void	key_arrow(t_fractol *frac, mlx_key_data_t keydata)
 	tmp = frac->new_s_y;
 	if (keydata.key == MLX_KEY_UP && keydata.action == MLX_PRESS)
 	{
-		frac->new_s_y -= 0.1 * (-frac->new_ed_y+ frac->new_s_y);
+		frac->new_s_y -= 0.1 * (-frac->new_ed_y + frac->new_s_y);
 		frac->new_ed_y -= 0.1 * (-frac->new_ed_y + tmp);
 	}
 	else if (keydata.key == MLX_KEY_DOWN && keydata.action == MLX_PRESS)
@@ -43,6 +56,7 @@ void	key_arrow(t_fractol *frac, mlx_key_data_t keydata)
 		frac->new_ed_y += 0.1 * (-frac->new_ed_y + tmp);
 	}
 }
+
 void	my_keyhook(mlx_key_data_t keydata, void *param)
 {
 	t_fractol	*frac;

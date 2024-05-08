@@ -6,7 +6,7 @@
 /*   By: wait-bab <wait-bab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 19:55:08 by wait-bab          #+#    #+#             */
-/*   Updated: 2024/04/28 19:58:06 by wait-bab         ###   ########.fr       */
+/*   Updated: 2024/05/08 10:46:54 by wait-bab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ typedef struct s_fractol
 	double		cx;
 	double		cy;
 
-
 	double		zx;
 	double		zy;
 	int32_t		max_iterations;
@@ -94,10 +93,11 @@ void			init_variable(t_fractol *var);
 
 // draw fractal
 void			draw(t_fractol *frac);
+
 // math fractal
 void			mandelbrot_math(t_fractol *frac);
 void			julia_math(t_fractol *frac);
-void burning_ship_math(t_fractol *frac);
+void			burning_ship_math(t_fractol *frac);
 
 // color
 int				interpolateColor(t_fractol *col);
